@@ -13,6 +13,7 @@ body {
     align-items: center;
     overflow-x: hidden;
     position: relative;
+    padding: 20px;
 }
 
 /* Animated Snow Effect */
@@ -32,9 +33,251 @@ body {
     background-size: 200px 200px, 300px 300px, 250px 250px, 350px 350px, 280px 280px;
     animation: snow 20s linear infinite;
     opacity: 0.6;
+    z-index: 0;
 }
 
 @keyframes snow {
+    from { background-position: 0 0, 0 0, 0 0, 0 0, 0 0; }
+    to { background-position: 200px 200px, 300px 300px, 250px 250px, 350px 350px, 280px 280px; }
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+header h1 {
+    color: #c41e3a;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+    color: #2d5a3d;
+    font-size: 1.1rem;
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+main {
+    margin: 2rem 0;
+}
+
+/* Gift Box Styling */
+.gift-box {
+    margin: 2rem auto;
+    width: 120px;
+    height: 120px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.gift-box:hover {
+    transform: scale(1.1);
+}
+
+.gift-box.opening .box-lid {
+    animation: lidOpen 0.6s ease forwards;
+}
+
+.gift-box.opening .box-body {
+    animation: shake 0.6s ease;
+}
+
+.box-lid {
+    width: 120px;
+    height: 35px;
+    background: #c41e3a;
+    border-radius: 10px 10px 0 0;
+    position: absolute;
+    top: 0;
+    border: 3px solid #8b1428;
+    z-index: 2;
+}
+
+.box-lid::before {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 50px;
+    background: gold;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -10px;
+}
+
+.box-lid::after {
+    content: '';
+    position: absolute;
+    width: 120px;
+    height: 8px;
+    background: gold;
+    left: 0;
+    top: 13px;
+}
+
+.box-body {
+    width: 120px;
+    height: 85px;
+    background: #c41e3a;
+    position: absolute;
+    top: 35px;
+    border-radius: 0 0 10px 10px;
+    border: 3px solid #8b1428;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box-icon {
+    font-size: 2.5rem;
+}
+
+@keyframes lidOpen {
+    to {
+        transform: translateY(-100px) rotateX(45deg);
+        opacity: 0;
+    }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* Button Styling */
+.open-btn, .try-again-btn {
+    background: linear-gradient(135deg, #c41e3a 0%, #8b1428 100%);
+    color: white;
+    border: none;
+    padding: 0.9rem 1.8rem;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(196, 30, 58, 0.3);
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.open-btn:hover, .try-again-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(196, 30, 58, 0.4);
+}
+
+.open-btn:active, .try-again-btn:active {
+    transform: translateY(-1px);
+}
+
+/* Surprise Content */
+.surprise-content {
+    display: none;
+    animation: fadeIn 0.8s ease;
+}
+
+.surprise-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.wish-card {
+    background: linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%);
+    padding: 2rem;
+    border-radius: 15px;
+    margin: 1.5rem 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.wish-card h2 {
+    color: #c41e3a;
+    margin-bottom: 1.2rem;
+    font-size: 1.6rem;
+}
+
+.wish-text {
+    color: #2d5a3d;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    font-style: italic;
+}
+
+footer {
+    margin-top: 2rem;
+    color: #2d5a3d;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .container {
+        padding: 1.5rem;
+    }
+    
+    .wish-card {
+        padding: 1.5rem;
+    }
+    
+    .wish-card h2 {
+        font-size: 1.4rem;
+    }
+    
+    .wish-text {
+        font-size: 1rem;
+    }
+
+    .gift-box {
+        width: 100px;
+        height: 100px;
+    }
+
+    .box-lid {
+        width: 100px;
+        height: 30px;
+    }
+
+    .box-lid::after {
+        width: 100px;
+    }
+
+    .box-body {
+        width: 100px;
+        height: 70px;
+        top: 30px;
+    }
+
+    .box-icon {
+        font-size: 2rem;
+    }
+}@keyframes snow {
     from { background-position: 0 0, 0 0, 0 0, 0 0, 0 0; }
     to { background-position: 200px 200px, 300px 300px, 250px 250px, 350px 350px, 280px 280px; }
 }
