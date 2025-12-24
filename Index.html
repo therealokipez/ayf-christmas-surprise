@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AYF Ijebu Christmas Surprise Box</title>
+    <title>AYF Christmas Surprise Box</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="snow"></div>
     <div class="container">
         <header>
-            <h1>🎄 Anglican Youth Fellowship Ijebu Diocese 🎄</h1>
+            <h1>🎄 Anglican Youth Fellowship 🎄</h1>
             <p class="subtitle">Christmas Surprise Box</p>
         </header>
 
@@ -33,8 +33,29 @@
                 <div class="music-card">
                     <h3>🎵 Your Christmas Song</h3>
                     <p class="song-title" id="songTitle"></p>
-                    <audio controls id="audioPlayer">
-                        <source id="audioSource" src="" type="audio/mpeg">
+                    <div class="video-container">
+                        <iframe id="youtubePlayer" 
+                                width="100%" 
+                                height="315" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+
+                <button class="try-again-btn" id="tryAgainBtn">Get Another Surprise! 🎁</button>
+            </div>
+        </main>
+
+        <footer>
+            <p>Merry Christmas from AYF! 🎅✨</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>                        <source id="audioSource" src="" type="audio/mpeg">
                         Your browser does not support the audio element.
                     </audio>
                 </div>
