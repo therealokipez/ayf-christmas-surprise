@@ -71,6 +71,145 @@ const additionalWishes = [
     "Wishing you a Christmas blessed with community, communion, and Christ's presence."
 ];
 
+// Christmas Songs with YouTube Links
+// HOW TO ADD YOUTUBE LINKS:
+// 1. Go to a YouTube video
+// 2. Click "Share" button
+// 3. Copy the link (e.g., https://www.youtube.com/watch?v=VIDEO_ID)
+// 4. Paste it in the url field below
+
+const christmasSongs = [
+    { 
+        title: "Silent Night", 
+        url: "https://youtu.be/8ri2thaAIyA?si=NZsrfViLDRnCm2EB"
+    },
+    { 
+        title: "O Holy Night", 
+        url: "https://youtu.be/BEJmP8T07JU?si=vnBQG1igydiKy__1"
+    },
+    { 
+        title: "Hark! The Herald Angels Sing", 
+        url: "https://youtu.be/xqooC4ZG75Y?si=ixFNwHPXoWOJkd8D"
+    },
+    { 
+        title: "Joy to the World", 
+        url: "https://youtu.be/-Xo64Q2ucQ8?si=hbUIHz8G5Yd0mobQ"
+    },
+    { 
+        title: "O Come, All Ye Faithful", 
+        url: "https://youtu.be/Mj7Pr42rliI?si=5L7K3Q4c_w4nIyF1"
+    },
+    { 
+        title: "The First Noel", 
+        url: "https://youtu.be/0u5UvnKlCTA?si=BIIL0OymM7xrAxGQ"
+    },
+    { 
+        title: "Angels We Have Heard on High", 
+        url: "https://youtu.be/VAMzAIH12yc?si=EAjfnzzqAwie07Z4"
+    },
+    { 
+        title: "Away in a Manger", 
+        url: "https://youtu.be/AnwO_0DrpCk?si=87XbRry3bgLHEQkd"
+    }
+];
+
+// NOTE: To add your own YouTube videos:
+// 1. Find the video on YouTube
+// 2. Get the video ID from the URL (the part after "watch?v=")
+// 3. Format it as: https://www.youtube.com/embed/VIDEO_ID
+// Example: https://www.youtube.com/watch?v=ABC123 becomes https://www.youtube.com/embed/ABC123
+
+// Generate Random Wish
+function generateWish() {
+    const useTemplate = Math.random() > 0.2; // 80% use template, 20% use pre-written
+    
+    if (useTemplate) {
+        const prefix = wishPrefixes[Math.floor(Math.random() * wishPrefixes.length)];
+        const middle = wishMiddles[Math.floor(Math.random() * wishMiddles.length)];
+        const ending = wishEndings[Math.floor(Math.random() * wishEndings.length)];
+        return `${prefix} ${middle} ${ending}`;
+    } else {
+        return additionalWishes[Math.floor(Math.random() * additionalWishes.length)];
+    }
+}
+
+// Get Random Song
+function getRandomSong() {
+    return christmasSongs[Math.floor(Math.random() * christmasSongs.length)];
+}
+
+// DOM Elements
+const giftBox = document.getElementById('giftBox');
+const openBtn = document.getElementById('openBtn');
+const surpriseContent = document.getElementById('surpriseContent');
+const wishText = document.getElementById('wishText');
+const songTitle = document.getElementById('songTitle');
+const youtubePlayer = document.getElementById('youtubePlayer');
+const tryAgainBtn = document.getElementById('tryAgainBtn');
+
+// Open Gift Box
+openBtn.addEventListener('click', () => {
+    giftBox.classList.add('opening');
+    openBtn.style.display = 'none';
+    
+    setTimeout(() => {
+        giftBox.style.display = 'none';
+        surpriseContent.classList.add('active');
+        
+        // Generate wish and song
+        wishText.textContent = generateWish();
+        const song = getRandomSong();
+        songTitle.textContent = song.title;
+        youtubePlayer.src = song.url;
+    }, 800);
+});
+
+// Try Again
+tryAgainBtn.addEventListener('click', () => {
+    surpriseContent.classList.remove('active');
+    giftBox.style.display = 'block';
+    giftBox.classList.remove('opening');
+    openBtn.style.display = 'inline-block';
+    
+    // Stop the current video
+    youtubePlayer.src = '';
+});
+const wishEndings = [
+    "this Christmas and always.",
+    "throughout this holy season.",
+    "now and forevermore.",
+    "today and every day ahead.",
+    "in this blessed time of celebration.",
+    "as we celebrate our Savior's birth.",
+    "this Christmas and in the new year.",
+    "during this season of hope and joy.",
+    "as we rejoice in His coming.",
+    "in this sacred season of wonder.",
+    "through all your days to come.",
+    "in this time of divine celebration.",
+    "as we remember the greatest gift.",
+    "throughout the twelve days of Christmas.",
+    "in this season of light and love."
+];
+
+const additionalWishes = [
+    "Wishing you a Christmas filled with worship, wonder, and the warmth of Christian fellowship.",
+    "May your Advent journey lead you to deeper faith and Christmas joy beyond measure.",
+    "Praying that the star of Bethlehem guides you to peace, hope, and everlasting joy.",
+    "May the miracle of Christmas morning bring renewal and rejoicing to your soul.",
+    "Blessed Christmas to you and yours, may the angels' song echo in your heart.",
+    "May you experience the profound joy of knowing Jesus, our Emmanuel, this Christmas.",
+    "Wishing you a season wrapped in prayer, tied with gratitude, and filled with grace.",
+    "May the Christ child's love fill your home with laughter, light, and lasting peace.",
+    "Praying your Christmas is blessed with sacred moments and cherished memories.",
+    "May the shepherds' wonder and the wise men's devotion inspire your celebration.",
+    "Wishing you the peace that passes understanding this holy Christmas season.",
+    "May your heart be a manger where Christ's love is born anew each day.",
+    "Blessed Advent and joyous Christmas! May your faith shine bright as the Christmas star.",
+    "May the carols we sing and prayers we share bring you closer to our Savior.",
+    "Wishing you a Christmas blessed with community, communion, and Christ's presence."
+];
+
 // Christmas Songs Array (You can add YouTube links or actual audio file paths)
 const christmasSongs = [
     { title: "Silent Night", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" },
