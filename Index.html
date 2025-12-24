@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AYF Christmas Surprise Box</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="snow"></div>
+    <div class="container">
+        <header>
+            <h1>🎄 Anglican Youth Fellowship 🎄</h1>
+            <p class="subtitle">Christmas Surprise Box</p>
+        </header>
+
+        <main>
+            <div class="gift-box" id="giftBox">
+                <div class="box-lid"></div>
+                <div class="box-body">
+                    <span class="box-icon">🎁</span>
+                </div>
+            </div>
+
+            <button class="open-btn" id="openBtn">Open Your Surprise!</button>
+
+            <div class="surprise-content" id="surpriseContent">
+                <div class="wish-card">
+                    <h2>Your Christmas Wish ✨</h2>
+                    <p class="wish-text" id="wishText"></p>
+                </div>
+
+                <div class="music-card">
+                    <h3>🎵 Your Christmas Song</h3>
+                    <p class="song-title" id="songTitle"></p>
+                    <audio controls id="audioPlayer">
+                        <source id="audioSource" src="" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+
+                <button class="try-again-btn" id="tryAgainBtn">Get Another Surprise! 🎁</button>
+            </div>
+        </main>
+
+        <footer>
+            <p>Merry Christmas from AYF! 🎅✨</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
